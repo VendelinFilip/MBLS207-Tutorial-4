@@ -74,116 +74,36 @@ Sbjct 73 NFSTSQ 78
    - c. Of these last 1,000 proteins, can you make another BLAST search to verify your conclusion? What else can you try?
 
 8. A bioinformatician wants to know what genetic functions are encoded on the DNA in a drop of rainwater. She isolates the metagenomic DNA from the rainwater and sends it to a company to be sequenced. Meanwhile, she writes a homology search program so that she can compare the sequences to an annotated database as soon as they come in. Her program builds an index of all the k-mers in the database sequences, and after she gets the data back from the company, the program searches this index for the k-mers in the sequences from the raindrop. For each query DNA sequence in the raindrop, she defines homologous hits as all the database sequences with a k-mer that matches the query.
-a. She runs her algorithm with k=99. Would you expect many hits? Why (not)?
-b. Does her algorithm identify local or global homology?
-c. Sketch a graph illustrating how the probability of finding at least one hit depends on the length of k if all the database sequences are random.
-d. From a biological perspective, explain what it means if the length of k is too high.
-e. She compares the speed of her program with another way of identifying local sequence homology in a database: BLAST. Explain which of the two approaches is faster and why.
-f. She compares the sensitivity of her program for detecting distant homologs with blastn and tblastx. Explain which of these three approaches is the most sensitive and which is the least sensitive.
+   - a. She runs her algorithm with k=99. Would you expect many hits? Why (not)?
+   - b. Does her algorithm identify local or global homology?
+   - c. Sketch a graph illustrating how the probability of finding at least one hit depends on the length of k if all the database sequences are random.
+   - d. From a biological perspective, explain what it means if the length of k is too high.
+   - e. She compares the speed of her program with another way of identifying local sequence homology in a database: BLAST. Explain which of the two approaches is faster and why.
+   - f. She compares the sensitivity of her program for detecting distant homologs with blastn and tblastx. Explain which of these three approaches is the most sensitive and which is the least sensitive.
 
 9. We have a short protein segment from chicken:
+```
 FGGHNAITYPPGVSLAVGHFFSEWAEKFGDPLYRSSSSSSSSSSSSSSSTENKLAFGTHRDRDVGHFFCKAGAAEKF
+```
 
 We do a BLAST search to predict its function. Top 10 hits are as follows.
 
-<table>
-  <thead>
-    <tr>
-      <th>Sequences producing significant alignments:</th>
-      <th>Score (Bits)</th>
-      <th>E Value</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>gi|76638832|ref|XP_60 similar to SRp25 nuclease [Bos taurus]</td>
-      <td>40.8</td>
-      <td>0.017</td>
-    </tr>
-    <tr>
-      <td>gi|6649242|gb|AAF21439.1| splicing coactivator subunit SRm300 ...</td>
-      <td>40.0</td>
-      <td>0.028</td>
-    </tr>
-    <tr>
-      <td>gi|66828915|ref|XP_647811.1| hypothetical protein DDB0206273 ...</td>
-      <td>40.0</td>
-      <td>0.028</td>
-    </tr>
-    <tr>
-      <td>gi|66358726|ref|XP_626541.1| hypothetical protein cgd2_3540 ...</td>
-      <td>39.7</td>
-      <td>0.037</td>
-    </tr>
-    <tr>
-      <td>gi|66910579|gb|AAH97374.1| ADP-ribosylation factor-like 6 int...</td>
-      <td>39.7</td>
-      <td>0.037</td>
-    </tr>
-    <tr>
-      <td>gi|66816197|ref|XP_642108.1| hypothetical protein DDB0204407 ...</td>
-      <td>39.7</td>
-      <td>0.037</td>
-    </tr>
-  </tbody>
-</table>
+```
+                                                                 Score    E
+Sequences producing significant alignments:                     (Bits)  Value
+gi|76638832|ref|XP_60 similar to SRp25 nuclease [Bos taurus]      40.8  0.017
+gi|6649242|gb|AAF21439.1| splicing coactivator subunit SRm300 ... 40.0  0.028
+gi|66828915|ref|XP_647811.1| hypothetical protein DDB0206273 ...  40.0  0.028
+gi|66358726|ref|XP_626541.1| hypothetical protein cgd2_3540 ....  39.7  0.037
+gi|66910579|gb|AAH97374.1| ADP-ribosylation factor-like 6 int...  39.7  0.037
+gi|66816197|ref|XP_642108.1| hypothetical protein DDB0204407 ...  39.7  0.037
+gi|71121770|gb|AAH99769.1| Arl6ip4 protein [Rattus norvegicus]    39.7  0.037
+gi|50549999|ref|XP_502472.1| hypothetical protein ..............  39.3  0.048
+gi|18676544|dbj|BAB84924.1| FLJ00169 protein [Homo sapiens]       39.3  0.048
+gi|109472504|ref|XP_001059| similar to enolase [Gallus gallus]    39.3  0.048
+gi|50365567|gb|AAT76079.1| GP60 [Cryptosporidium hominis]         38.9  0.063
+```
+  - a. Can you predict the function of this protein based on this output?
+  - b. What could you do to improve this search?
 
----
-
-
-## Page 4
-
-<table>
-  <thead>
-    <tr>
-      <th>gi</th>
-      <th>71121770</th>
-      <th>gb</th>
-      <th>AAH99769.1</th>
-      <th>Arl6ip4 protein [Rattus norvegicus]</th>
-      <th>39.7</th>
-      <th>0.037</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <td>gi</td>
-      <td>50549999</td>
-      <td>ref</td>
-      <td>XP_502472.1</td>
-      <td>hypothetical protein</td>
-      <td>39.3</td>
-      <td>0.048</td>
-    </tr>
-    <tr>
-      <td>gi</td>
-      <td>18676544</td>
-      <td>dbj</td>
-      <td>BAB84924.1</td>
-      <td>FLJ00169 protein [Homo sapiens]</td>
-      <td>39.3</td>
-      <td>0.048</td>
-    </tr>
-    <tr>
-      <td>gi</td>
-      <td>109472504</td>
-      <td>ref</td>
-      <td>XP_001059</td>
-      <td>similar to enolase [Gallus gallus]</td>
-      <td>39.3</td>
-      <td>0.048</td>
-    </tr>
-    <tr>
-      <td>gi</td>
-      <td>50365567</td>
-      <td>gb</td>
-      <td>AAT76079.1</td>
-      <td>GP60 [Cryptosporidium hominis]</td>
-      <td>38.9</td>
-      <td>0.063</td>
-    </tr>
-  </tbody>
-</table>
-
-a. Can you predict the function of this protein based on this output?
-b. What could you do to improve this search?
+[Go to part 2](02-Part.md)
