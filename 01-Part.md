@@ -1,6 +1,5 @@
 # Tutorial 4 – part 1
 Sequence similarity searching with BLAST
-MBLS207 - Bioinformatics
 
 1. Which type of mutation should cause the minimal change in a BLAST score for a nucleotide alignment?
     - a. 3-nucleotide insertion
